@@ -8,13 +8,12 @@
 	curl_setopt($curl, CURLOPT_RETURNTRANSFER, True);
 	$result = curl_exec($curl);
 
-	$p = "$query.json";
-	if (!file_exists($p)){
-		file_put_contents($p, $result);
-		$json = file_get_contents($p);
-		print $json;
-	}else {
-		$myfile = fopen($p,"r");
-		echo fread($myfile, filesize($p));
-	}
+			$p = "/tmp/$query.json";
+		 if (!file_exists($p)){
+		 	file_put_contents($p, $result);
+		 	$json = file_get_contents($p);
+		 	print $json;
+		 }else {
+		 	echo file_get_contents($p);
+		}
   ?>
